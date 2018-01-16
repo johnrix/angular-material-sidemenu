@@ -39,18 +39,15 @@ if( !attrs.id ){
   wrapper.css('marginTop', -( getTheChildrensLength( wrapper.children() ) ) + 'px');
 
 
-  if( attrs.onHover ){
-    /*
-      Active or disable the menu on hover event.
-      @status: Boolean
-     */
-    let showOrHideMenu = (status) => {
-        scope.$apply( () => scope.$mdSidemenuContent.visible = status );
-    };
+  /*
+    Active or disable the menu on hover event.
+    @status: Boolean
+   */
+  let showOrHideMenu = (status) => {
+      scope.$apply( () => scope.$mdSidemenuContent.onHover ? scope.$mdSidemenuContent.visible = status : false );
+  };
 
-    element.on('mouseenter', () => { showOrHideMenu(true);  });
-    element.on('mouseleave', () => { showOrHideMenu(false); });
-
-  }
+  element.on('mouseenter', () => { showOrHideMenu(true);  });
+  element.on('mouseleave', () => { showOrHideMenu(false); });
 
 };
